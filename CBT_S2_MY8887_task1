@@ -1,0 +1,56 @@
+/*WORD COUNT TOOL
+
+CipherByte Technologies Task1
+
+*/
+
+#include<stdio.h>
+
+#include<string.h>
+
+#define SIZE 50
+
+void main()
+
+{
+
+	char str[SIZE];
+
+	int line=0,word=0,ch=0,i;
+
+	printf("Enter string\n");
+
+	gets(str);
+
+	for(i=0;i<strlen(str);i++)
+
+	{
+
+		ch++;
+
+		if(str[i]=='.'||str[i]=='?')
+
+		{
+
+			line++;
+
+		}
+
+		if(str[i]==' '||str[i]=='.'||str[i]=='?')
+
+		{
+
+			word++;
+
+		}
+
+	}
+
+	printf("\nTotal number of words=%d",word);
+
+	printf("\nTotal number of characters=%d",ch);
+
+	printf("\nTotal number of lines=%d",line);
+
+}
+
