@@ -1,4 +1,8 @@
+/* Expense Tracker 
 
+CipherByte Technologies Task2
+
+*/
 
 #include<stdio.h>
 #include<stdlib.h>
@@ -44,21 +48,14 @@ char s1[15],s2[15],s3[15];
 
 
 
-if(fopen("Record.bin","rb")!=NULL)/*first time it will give null bcoz there is no file name record.bin,therefor it will not take income
-                     and expense from file,assign value will be displayed i.e 0,0..after creating income and expense first time
-                      user exits then record.bin
-                     will be create and again  when user runs program then this if will execute and take income and expense from file*/ 
+if(fopen("Record.bin","rb")!=NULL)                  will be create and again  when user runs program then this if will execute and take income and expense from file*/ 
 {
 point=readrecord();
 currentincome=point->x;
 currentexpense=point->y;
 }
 
-if(fopen("myincome.bin","rb")!=NULL)/*it means file is already created and some data is already there,and we have to get that and create
-                                         linked list,address of first node will be in income pointer. step bcoz if we dont do this than 
-                                     after closing terminal if we create inome and saved it than previous data will be deletedand it 
-                                   overrtites in file...after doing this income will point to first node and all data will be come in ram
-                                    in form linked list*/
+if(fopen("myincome.bin","rb")!=NULL)
 {
 income=readincome(income);
 }
@@ -100,10 +97,6 @@ printf("Enter The Amount\n");
 scanf("%lf",&b);
 printf("Enter the Category\n");
 scanf("%s",c);
-  
-
-
-
 currentincome=currentincome+b;
 create(a,b,c,&income);
 writeincome(income);
@@ -155,14 +148,7 @@ break;
 
 return 0;
 }
-
-
-
-
-
-
-
-void create(char x[],double y,char z[],struct node **temp)        /* it isokay to write *temp if we pass only income rather than &income*/
+void create(char x[],double y,char z[],struct node **temp)        
 {
 struct node *newnode,*ptr;
 newnode=(struct node*)malloc(sizeof(struct node));
@@ -200,12 +186,6 @@ free(freeme);
 freeme=holdme;
 }
 }
-
-
-
-
-
-
 struct node *readnext(struct node *ptr,FILE *fpointer)
 {
 
@@ -229,11 +209,6 @@ ptr2->next=NULL;
 }
 return ptr;
 }
-
-
-
-
-
 struct node *readincome(struct node *ptr)
 {
 FILE *fpointer;
@@ -258,22 +233,12 @@ printf("ERROR IN OPENINNG FILE\n");
 }
 return ptr;
 }
-
-
-
-
-
-
-
-
 void display(int a3)
 {
    if(a3==3)//if case 3 is executed,we have to print income record
     {
                    
-                 if(fopen("myincome.bin","rb")==NULL)/*if user try to view record when there is no any record,i.e when user runs program
-                                                       first time and wants to view record i.e there is no any
-                                                        file created yet as myincome.bin,then it will =NULL */
+                 if(fopen("myincome.bin","rb")==NULL)
 
                          {
                              printf("NO RECORDS AVAILABLE\n\n");
@@ -297,9 +262,7 @@ void display(int a3)
 else if(a3==4)//if case 4 is executed then we have to print expenese record
    {
                
-                 if(fopen("myexpense.bin","rb")==NULL)/*if user try to view record when there is no any record,i.e when user runs program
-                                                       first time and wants to view record i.e there is no any
-                                                        file created yet as myexpense.bin,then it will =NULL */
+                 if(fopen("myexpense.bin","rb")==NULL)
                
                           {
                              printf("NO RECORDS AVAILABLE\n\n");
@@ -324,14 +287,6 @@ else if(a3==4)//if case 4 is executed then we have to print expenese record
   } 
 
 }
-
-
-
-
-
-
-
-
 void writeincome(struct node *ptr)
 {
 FILE *fpointer;
@@ -345,7 +300,7 @@ while(ptr1!=NULL)
 holdnext=ptr1->next;
 ptr1->next=NULL;
 fseek(fpointer,0,SEEK_END);
-fwrite(ptr1,sizeof(struct node),1,fpointer);/*everytime we write into file,it will overwrite the data......                                                      whole data will be deleted and new data willl be written intofile*/
+fwrite(ptr1,sizeof(struct node),1,fpointer);
 ptr1->next=holdnext;
 holdnext=NULL;
 ptr1=ptr1->next;
@@ -362,11 +317,6 @@ printf("\nCANNOT SAVE INCOME..TRY AGAIN\n");
 
 }
 }
-
-
-
-
-
 void writeexpense(struct node *ptr)
 {
 FILE *fpointer;
@@ -398,18 +348,6 @@ printf("\nCANNOT SAVE EXPENSE..TRY AGAIN\n\n");
 
 }
 }
-
-
-
-
-
-
-
-
-
-
-
-
 struct node *readexpense(struct node *ptr)
 {
 FILE *fpointer;
@@ -435,21 +373,6 @@ printf("cannonot open file\n");
 }
 return ptr;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 void write(struct record *point)
 {
 FILE *fpointer;
@@ -468,12 +391,6 @@ fclose(fpointer);
 fpointer=NULL;
 
 }
-
-
-
-
-
-
 struct record *readrecord()
 {
 FILE *fpointer;
