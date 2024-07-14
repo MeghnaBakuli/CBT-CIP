@@ -48,7 +48,7 @@ char s1[15],s2[15],s3[15];
 
 
 
-if(fopen("Record.bin","rb")!=NULL)                  will be create and again  when user runs program then this if will execute and take income and expense from file*/ 
+if(fopen("Record.bin","rb")!=NULL) 
 {
 point=readrecord();
 currentincome=point->x;
